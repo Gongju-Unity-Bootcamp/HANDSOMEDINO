@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Playerdie
+  m_Name: PlayerDie
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,9 +22,9 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 1037871099, guid: 9b8710381c964f749853cd70a38d20e2, type: 3}
-    - time: 0.083333336
+    - time: 0.25
       value: {fileID: 943587014, guid: 9b8710381c964f749853cd70a38d20e2, type: 3}
-    - time: 0.16666667
+    - time: 0.41666666
       value: {fileID: -1621621276, guid: 9b8710381c964f749853cd70a38d20e2, type: 3}
     attribute: m_Sprite
     path: 
@@ -56,7 +56,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.25
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
