@@ -2,36 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class PlyaerController : MonoBehaviour
 {
-    public float speed = 5.0f;
-
-    SpriteRenderer spriteRenderer;
+    PlayerMovement playerMovement;
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         float directionX = Input.GetAxisRaw("Horizontal");
-        Move(directionX);
-    }
+        playerMovement.Move(directionX);
 
-    void Move(float directionX)
-    {
-        if(directionX == 1)
+        if (Input.GetButtonDown("Jump"))
         {
-            spriteRenderer.flipX = false;
-        }
-        else if(directionX == -1)
-        {
-            spriteRenderer.flipX = true;
+            playerMovement.Jump();
         }
 
-        transform.Translate(directionX * speed * Time.deltaTime, 0, 0);
+        if (Input.GetButton("Jump"))
+        {
+            playerMovement.isLongJump = true;
+        }
+        else if (Input.GetButtonUp("Jump"))
+        {
+            playerMovement.isLongJump = false;
+        }
     }
-
 }
