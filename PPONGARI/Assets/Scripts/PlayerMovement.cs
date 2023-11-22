@@ -13,22 +13,32 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float jumpForce = 6.5f;
     [SerializeField]
-    public bool isLongJump = false;
-    [SerializeField]
     private float longJumpGravityScale = 1f;
     [SerializeField]
     private float shortJumpGravityScale = 2.5f;
+    public bool isLongJump = false;
+
+    [SerializeField]
+    private LayerMask groundLayer;
+    private CircleCollider2D circleCollider2D;
+    private bool isGround;
+    private Vector3 footPosition;
 
     // Start is called before the first frame update
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigid2D = GetComponent<Rigidbody2D>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        Bounds bounds = circleCollider2D.bounds;
+        footPosition = new Vector2(bounds.center.x, bounds.min.y);
+        isGround = Physics2D.OverlapCircle(footPosition, 0.1f, groundLayer);
+
         if (isLongJump && rigid2D.velocity.y > 0)
         {
             rigid2D.gravityScale = longJumpGravityScale;
@@ -55,6 +65,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        rigid2D.velocity = Vector2.up * jumpForce;
+        if (isGround)
+        {
+            rigid2D.velocity = Vector2.up * jumpForce;
+        }
     }
 }
