@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isGround;
     private Vector3 footPosition;
 
+    [SerializeField]
+    private int maxJumpCount = 2;
+    private int currentJumpCount = 0;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -38,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
         Bounds bounds = circleCollider2D.bounds;
         footPosition = new Vector2(bounds.center.x, bounds.min.y);
         isGround = Physics2D.OverlapCircle(footPosition, 0.1f, groundLayer);
+
+        if (isGround == true && rigid2D.velocity.y <= 0)
+        {
+            currentJumpCount = maxJumpCount;
+        }
 
         if (isLongJump && rigid2D.velocity.y > 0)
         {
@@ -65,9 +74,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (isGround)
+        if (currentJumpCount > 0)
         {
             rigid2D.velocity = Vector2.up * jumpForce;
+            currentJumpCount--;
         }
     }
 }
