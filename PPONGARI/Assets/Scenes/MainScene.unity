@@ -2932,9 +2932,8 @@ GameObject:
   - component: {fileID: 1727607744}
   - component: {fileID: 1727607746}
   - component: {fileID: 1727607749}
-  - component: {fileID: 1727607743}
-  - component: {fileID: 1727607748}
-  - component: {fileID: 1727607747}
+  - component: {fileID: 1727607751}
+  - component: {fileID: 1727607750}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3036,21 +3035,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1727607743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727607738}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50c00468d4fe30f4ea5b564a642d1e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 6.5
-  isLongJump: 0
 --- !u!58 &1727607744
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3152,35 +3136,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.63755155, y: 0.28880188}
   m_EdgeRadius: 0
---- !u!114 &1727607747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727607738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6f97c8b1b9c3748821d8298936e7ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 6.5
-  longJumpGravityScale: 1
-  shortJumpGravityScale: 2.5
-  isLongJump: 0
---- !u!114 &1727607748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727607738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df93d84a93650bb44b3d4633f36016eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!66 &1727607749
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -3238,6 +3193,35 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 1727607738}
+--- !u!114 &1727607750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727607738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4b37e5ed2aa16468f06c9dc266becb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpForce: 6.5
+  isLongJump: 0
+  longJumpGravityScale: 1
+  shortJumpGravityScale: 2.5
+--- !u!114 &1727607751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727607738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c00468d4fe30f4ea5b564a642d1e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1779442941
 GameObject:
   m_ObjectHideFlags: 0
