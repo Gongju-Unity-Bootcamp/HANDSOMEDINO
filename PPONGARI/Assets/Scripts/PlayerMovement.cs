@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private LayerMask groundLayer;
     private CircleCollider2D circleCollider2D;
     private bool isGround;
-    private Vector3 footPosition;
+    private Vector2 footPosition;
 
     [SerializeField]
     private int maxJumpCount = 2;
