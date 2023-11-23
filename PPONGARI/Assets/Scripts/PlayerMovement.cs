@@ -29,15 +29,22 @@ public class PlayerMovement : MonoBehaviour
     private int maxJumpCount = 2;
     private int currentJumpCount = 0;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    Transform spawnPoint;
+    Transform playerTransform;
+    Vector2 defaultPosition = new Vector2();
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigid2D = GetComponent<Rigidbody2D>();
         circleCollider2D = GetComponent<CircleCollider2D>();
+        playerTransform = GetComponent<Transform>();
+        spawnPoint = GameObject.Find("SpawnPoint").GetComponent<Transform>();
+
+        defaultPosition = new Vector2(spawnPoint.position.x, spawnPoint.position.y);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Bounds bounds = circleCollider2D.bounds;
@@ -81,5 +88,10 @@ public class PlayerMovement : MonoBehaviour
             currentJumpCount--;
         }
 
+    }
+
+    public void PositionReset()
+    {
+        playerTransform.position = defaultPosition;
     }
 }
