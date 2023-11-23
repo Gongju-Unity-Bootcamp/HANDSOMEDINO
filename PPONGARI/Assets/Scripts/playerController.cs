@@ -29,5 +29,10 @@ public class PlayerController : MonoBehaviour
         {
             playerMovement.isLongJump = false;
         }
+
+        if (Input.GetButtonDown("PositionReset"))
+        {
+            playerMovement.PositionReset();
+        }
     }
 }

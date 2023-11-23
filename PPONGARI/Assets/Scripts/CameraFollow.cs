@@ -12,13 +12,11 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private float cameraMoveSpeed;
 
-    // Start is called before the first frame update
     void Awake()
     {
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         LimitCameraArea();
