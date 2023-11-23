@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Rigidbody2D rigid2D;
 
+
     [SerializeField]
     private float speed = 5.0f;
 
@@ -79,5 +80,6 @@ public class PlayerMovement : MonoBehaviour
             rigid2D.velocity = Vector2.up * jumpForce;
             currentJumpCount--;
         }
+
     }
 }
