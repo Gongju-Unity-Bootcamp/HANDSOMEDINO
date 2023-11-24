@@ -40,7 +40,7 @@ public class PlayerAnimator : MonoBehaviour
         if (playerMovement.isLongJump && rigid2D.velocity.y > 0)
         {
             animator.SetBool("isJump", true);
-            Debug.Log("Jump");
+            //Debug.Log("Jump");
         }
         else
         { 
