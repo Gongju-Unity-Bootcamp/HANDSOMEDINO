@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -34,6 +32,18 @@ public class PlayerMovement : MonoBehaviour
     Transform playerTransform;
     Vector2 defaultPosition = new Vector2();
 
+    [SerializeField]
+    Transform wallCheck;
+    [SerializeField]
+    private float wallCheckDistance;
+    [SerializeField]
+    private float slidingSpeed;
+    [SerializeField]
+    private LayerMask wallLayer;
+    private bool isWall;
+    private float directionX; 
+    
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -48,8 +58,12 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Bounds bounds = circleCollider2D.bounds;
+        directionX = Input.GetAxisRaw("Horizontal");
         footPosition = new Vector2(bounds.center.x, bounds.min.y);
         isGround = Physics2D.OverlapCircle(footPosition, 0.1f, groundLayer);
+        isWall = Physics2D.Raycast(wallCheck.position, Vector2.right * directionX, wallCheckDistance, wallLayer);
+
+        WallJump();
 
         if (isGround == true && rigid2D.velocity.y <= 0)
         {
@@ -66,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Move(float directionX)
+    public void Move()
     {
         if(directionX == 1)
         {
@@ -87,11 +101,19 @@ public class PlayerMovement : MonoBehaviour
             rigid2D.velocity = Vector2.up * jumpForce;
             currentJumpCount--;
         }
-
     }
 
     public void PositionReset()
     {
         playerTransform.position = defaultPosition;
+    }
+
+    public void WallJump()
+    {
+        if (isWall)
+        {
+            currentJumpCount = maxJumpCount;
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, rigid2D.velocity.y * slidingSpeed);
+        }
     }
 }
