@@ -13,8 +13,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float directionX = Input.GetAxisRaw("Horizontal");
-        playerMovement.Move(directionX);
+        playerMovement.Move();
 
         if (Input.GetButtonDown("Jump"))
         {
