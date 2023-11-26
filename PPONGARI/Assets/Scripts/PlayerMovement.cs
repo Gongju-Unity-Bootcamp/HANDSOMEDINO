@@ -28,9 +28,9 @@ public class PlayerMovement : MonoBehaviour
     private int currentJumpCount = 0;
 
     [SerializeField]
-    Transform spawnPoint;
+    Transform startPoint;
     Transform playerTransform;
-    Vector2 defaultPosition = new Vector2();
+    public Vector2 lastCheckPointPos;
 
     [SerializeField]
     Transform wallCheck;
@@ -50,9 +50,9 @@ public class PlayerMovement : MonoBehaviour
         rigid2D = GetComponent<Rigidbody2D>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         playerTransform = GetComponent<Transform>();
-        spawnPoint = GameObject.Find("SpawnPoint").GetComponent<Transform>();
+        startPoint = GetComponent<Transform>();
 
-        defaultPosition = new Vector2(spawnPoint.position.x, spawnPoint.position.y);
+        lastCheckPointPos = new Vector2(startPoint.position.x, startPoint.position.y);
     }
 
     void FixedUpdate()
@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void PositionReset()
     {
-        playerTransform.position = defaultPosition;
+        playerTransform.position = lastCheckPointPos;
     }
 
     public void WallJump()
