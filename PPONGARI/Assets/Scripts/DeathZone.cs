@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRespawn : MonoBehaviour
+public class DeathZone : MonoBehaviour
 {
     PlayerMovement playerMovement;
 
-    // Start is called before the first frame update
     void Awake()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
